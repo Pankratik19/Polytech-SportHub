@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Sport } from '../sports/sport';
+import { SportService } from '../sports/sports.service';
 
 @Component({
   selector: 'app-main-page',
@@ -9,14 +11,19 @@ import { CommonModule } from '@angular/common';
   styleUrl: './main-page.component.scss',
 })
 export class MainPageComponent {
+  sports: Sport[] = [];
 
-  cards = [
-    { title: 'Volleyball', imageUrl: '' },
-    { title: 'Basketball', imageUrl: '' },
-    { title: 'Tennis', imageUrl: '' },
-    { title: 'Soccer', imageUrl: '' },
-    { title: 'Baseball', imageUrl: '' },
-    { title: 'Swimming', imageUrl: '' },
-  ];
-  constructor() {}
+  constructor(private readonly sportService: SportService) {}
+
+  ngOnInit(): void {
+    this.sportService.getSports().subscribe({
+      next: (data) => {
+        this.sports = data;
+        console.log('Fetched sports:', data);
+      },
+      error: (err) => {
+        console.error('Failed to load sports', err);
+      },
+    });
+  }
 }
