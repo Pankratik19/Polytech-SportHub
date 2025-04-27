@@ -3592,24 +3592,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\lil.poop\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\sahsa\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lil.poop\\Documents\\GitHub\\oreanda\\Polytech-SportHub\\SportHubApi\\SportHubApi.csproj",
+      "projectUniqueName": "C:\\Users\\sahsa\\OneDrive\\Документы\\GitHub\\Polytech-SportHub\\SportHubApi\\SportHubApi.csproj",
       "projectName": "SportHubApi",
-      "projectPath": "C:\\Users\\lil.poop\\Documents\\GitHub\\oreanda\\Polytech-SportHub\\SportHubApi\\SportHubApi.csproj",
-      "packagesPath": "C:\\Users\\lil.poop\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lil.poop\\Documents\\GitHub\\oreanda\\Polytech-SportHub\\SportHubApi\\obj\\",
+      "projectPath": "C:\\Users\\sahsa\\OneDrive\\Документы\\GitHub\\Polytech-SportHub\\SportHubApi\\SportHubApi.csproj",
+      "packagesPath": "C:\\Users\\sahsa\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\sahsa\\OneDrive\\Документы\\GitHub\\Polytech-SportHub\\SportHubApi\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\lil.poop\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\sahsa\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
