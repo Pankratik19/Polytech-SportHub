@@ -1,7 +1,50 @@
-.footer-container{
+.footer-container {
+  display: flex;
+  width: 100%;
+  height: 200px;
+  background-color: rgb(221, 220, 220);
+  color: rgb(109, 109, 109);
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  padding-left: 40px;
+  justify-content: end;
+  .logo-container {
     display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 200px;
-    background-color: rgb(82, 82, 82);
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    .footer-logo {
+      height: 40px;
+    }
+  }
+}
+
+.footer-right {
+  display: flex;
+  width: 40%;
+  padding-right: 80px;
+  justify-content: end;
+  align-self: end;
+  align-items: center;
+  gap: 24px;
+  .button {
+    padding: 8px;
+    background-color: transparent;
+    color: rgb(109, 109, 109);
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease,
+      border-color 0.3s ease;
+  }
+
+  .button:hover {
+    background-color: rgb(109, 109, 109);
+    color: white;
+  }
 }

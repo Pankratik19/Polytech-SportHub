@@ -10,6 +10,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.Cors": "2.3.0",
           "Microsoft.AspNetCore.OpenApi": "8.0.10",
+          "Microsoft.EntityFrameworkCore": "9.0.4",
           "Microsoft.EntityFrameworkCore.Design": "9.0.4",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.4",
           "Swashbuckle.AspNetCore": "6.6.2"
