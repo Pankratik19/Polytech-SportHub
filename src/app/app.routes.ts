@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { EventsComponent } from './events/events.component';
 import { CoachesComponent } from './coaches/coaches.component';
-import { AboutUsComponent } from './about-us/about-us.component';
+import { TeamsComponent } from './teams/teams.component';
 import { MainPageComponent } from './main-page/main-page.component';
 
 export const routes: Routes = [
@@ -13,7 +13,7 @@ export const routes: Routes = [
       { path: 'home', component: MainPageComponent },
       { path: 'events', component: EventsComponent   },
       { path: 'coaches', component: CoachesComponent  },
-      { path: 'about-us', component: AboutUsComponent  },
+      { path: 'teams', component: TeamsComponent  },
     ],
   },
 ];

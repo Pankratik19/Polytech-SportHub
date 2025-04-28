@@ -1,0 +1,57 @@
+.main-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 80px;
+    justify-content: center;
+    padding: 80px;
+    
+}
+
+.coach-card{
+    width: 40%;
+    min-height: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    color: rgb(92, 92, 92);
+}
+
+.top-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    min-height: 350px;
+
+    img{
+        width: 300px;
+    }
+
+    .info{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 18px;
+        margin-top: 100px;
+        margin-right: 40px;
+    }
+
+}
+
+.sports{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+
+    .sport{
+        display: flex;
+        width: 160px;
+        height: 80px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        justify-content: center;
+        align-items: center;
+    }
+}
