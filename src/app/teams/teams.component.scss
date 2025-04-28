@@ -1,0 +1,72 @@
+.main-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  justify-content: center;
+  align-items: center;
+  padding: 80px;
+}
+
+.team-card{
+    width: 75%;
+    min-height: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+    border-radius: 16px;
+    padding-left: 40px;
+    padding-right: 40px;
+    color: rgb(92, 92, 92);
+
+    .left-container{
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+
+        .title{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 12px;
+
+            img{
+                height: 36px;
+            }
+        }
+
+        .coach{
+            img{
+                width: 200px;
+            }
+            h3{
+                justify-self: left;
+            }
+        }
+    }
+
+    .right-container{
+        display: flex;
+        width: 60%;
+        gap: 40px;
+        flex-wrap: wrap;
+
+
+
+        .player-card{
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-items: center;
+            align-items: center;
+            width: 110px;
+
+            img{
+                width: 80px;
+            }
+        }
+    }
+}
