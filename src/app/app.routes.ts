@@ -4,6 +4,7 @@ import { EventsComponent } from './events/events.component';
 import { CoachesComponent } from './coaches/coaches.component';
 import { TeamsComponent } from './teams/teams.component';
 import { MainPageComponent } from './main-page/main-page.component';
+import { SportDetailsComponent } from './sport-details/sport-details.component';
 
 export const routes: Routes = [
   {
@@ -11,9 +12,10 @@ export const routes: Routes = [
     component: MainComponent,
     children: [
       { path: 'home', component: MainPageComponent },
-      { path: 'events', component: EventsComponent   },
-      { path: 'coaches', component: CoachesComponent  },
-      { path: 'teams', component: TeamsComponent  },
+      { path: 'events', component: EventsComponent },
+      { path: 'coaches', component: CoachesComponent },
+      { path: 'teams', component: TeamsComponent },
+      { path: 'sport-details', component: SportDetailsComponent },
     ],
   },
 ];
