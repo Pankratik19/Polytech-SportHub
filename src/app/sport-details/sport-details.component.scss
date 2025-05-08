@@ -14,6 +14,7 @@
   flex-direction: column;
   gap: 20px;
   padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   h1 {
     align-self: center;
   }
@@ -44,12 +45,11 @@
     .team-card {
       width: 100%;
       min-height: 200px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      border-radius: 16px;
+      border: none;
       padding-left: 40px;
       padding-right: 40px;
       color: rgb(92, 92, 92);
@@ -105,4 +105,34 @@
 
 .right-container {
   width: 30%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    input {
+      height: 36px;
+      border-radius: 8px;
+      border-color: gray;
+      border-style: solid;
+      border-width: 1px;
+    }
+  }
+  .buttonForm {
+    width: 30%;
+    background-color: black;
+    color: whitesmoke;
+    height: 48px;
+    border-radius: 14px;
+    font-size: 18px;
+    border: none;
+  }
 }
