@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Sport } from '../sports/sport';
 import { SportService } from '../sports/sports.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-main-page',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule],
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.scss',
 })

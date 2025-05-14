@@ -1,0 +1,152 @@
+.main-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  gap: 40px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.left-container {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+  h1 {
+    align-self: center;
+  }
+  .SportInfo {
+    min-height: 250px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    gap: 20px;
+    p {
+      font-size: 18px;
+    }
+    .img-container {
+      width: 30%;
+      padding: 30px;
+      img {
+        width: 100%;
+      }
+    }
+
+    .info-container {
+      width: 70%;
+    }
+  }
+
+  .TeamInfo {
+    min-height: 250px;
+    .team-card {
+      width: 100%;
+      min-height: 200px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      border: none;
+      padding-left: 40px;
+      padding-right: 40px;
+      color: rgb(92, 92, 92);
+
+      .left-container {
+        display: flex;
+        box-shadow: none;
+        flex-direction: column;
+        width: 40%;
+
+        .title {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 12px;
+
+          img {
+            height: 36px;
+          }
+        }
+
+        .coach {
+          img {
+            width: 200px;
+          }
+          h3 {
+            justify-self: left;
+          }
+        }
+      }
+
+      .right-container {
+        display: flex;
+        width: 60%;
+        gap: 40px;
+        box-shadow: none;
+        flex-wrap: wrap;
+
+        .player-card {
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          border-radius: 8px;
+          display: flex;
+          flex-direction: column;
+          justify-items: center;
+          align-items: center;
+          width: 110px;
+          img {
+            width: 80px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.right-container {
+  width: 40%;
+  h2 {
+    justify-self: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    gap: 30px;
+    width: 100%;
+    min-height: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    label {
+      font-size: 16px;
+      font-weight: 600;
+      color: rgb(97, 97, 97);
+    }
+    input {
+      height: 36px;
+      border-radius: 8px;
+      border-color: gray;
+      border-style: solid;
+      border-width: 1px;
+    }
+  }
+  .buttonForm {
+    width: 30%;
+    background-color: black;
+    color: whitesmoke;
+    height: 48px;
+    border-radius: 14px;
+    font-size: 18px;
+    border: none;
+  }
+}
