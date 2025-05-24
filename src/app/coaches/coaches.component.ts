@@ -9,15 +9,13 @@ import { CommonModule } from '@angular/common';
   styleUrl: './coaches.component.scss',
 })
 export class CoachesComponent {
-
   coaches = [
-    { name: 'coach1', info: 'lalalala', sports : [
-      { name: 'volleyball' },
-      { name: 'basketball' },
-    ] },
-    { name: 'coach2', info: 'aoaooaoa', sports2 : [
-      { name: 'badminton' },
-    ] },
+    {
+      name: 'coach1',
+      info: 'lalalala',
+      sports: [{ name: 'volleyball' }, { name: 'basketball' }],
+    },
+    { name: 'coach2', info: 'aoaooaoa', sports2: [{ name: 'badminton' }] },
   ];
 
   // sports = [
