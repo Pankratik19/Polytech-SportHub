@@ -11,11 +11,11 @@ namespace SportHubApi.Models
         public required string Name { get; set; }
 
         [Column("photo")]
-        public required string Photo { get; set; }
+        public string? Photo { get; set; }
 
         [Column("additionalinfo")]
-        public required string AdditionalInfo { get; set; }
+        public string? AdditionalInfo { get; set; }
 
-        public required ICollection<Sport>? Sports { get; set; }
+        public ICollection<Sport>? Sports { get; set; }
     }
 }
