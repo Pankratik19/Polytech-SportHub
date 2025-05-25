@@ -20,12 +20,20 @@ namespace SportsApi.Controllers
         public async Task<ActionResult<IEnumerable<Sport>>> GetSports()
         {
             var sports = await _context.Sports
-                .Include(s => s.Coach)
-                .Include(s => s.Info)
-                .Include(s => s.Teams)
-                .Include(s => s.Events)
-                .Include(s => s.JoinTeamRequest)
-                .ToListAsync();
+        .AsNoTracking()
+        .Include(s => s.Coach)
+        .Select(s => new Sport
+        {
+            Id = s.Id,
+            Name = s.Name,
+            Photo = s.Photo,
+            Coach = s.Coach == null ? null : new Coach
+            {
+                Id = s.Coach.Id,
+                Name = s.Coach.Name
+            }
+        })
+        .ToListAsync();
 
             return Ok(sports);
         }

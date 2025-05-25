@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CoachService } from './coach.service';
+import { Coach } from './coach';
 
 @Component({
   selector: 'app-coaches',
@@ -9,22 +11,19 @@ import { CommonModule } from '@angular/common';
   styleUrl: './coaches.component.scss',
 })
 export class CoachesComponent {
-  coaches = [
-    {
-      name: 'coach1',
-      info: 'lalalala',
-      sports: [{ name: 'volleyball' }, { name: 'basketball' }],
-    },
-    { name: 'coach2', info: 'aoaooaoa', sports2: [{ name: 'badminton' }] },
-  ];
+  coaches: Coach[] = [];
 
-  // sports = [
-  //   { name: 'volleyball' },
-  //   { name: 'basketball' },
-  // ]
+  constructor(private readonly coachService: CoachService) {}
 
-  // sports2 = [
-  //   { name: 'badminton' },
-  // ]
-  constructor() {}
+  ngOnInit(): void {
+    this.coachService.getCoaches().subscribe({
+      next: (data) => {
+        this.coaches = data;
+        console.log('Fetched coaches:', data);
+      },
+      error: (err) => {
+        console.error('Failed to load coaches', err);
+      },
+    });
+  }
 }
