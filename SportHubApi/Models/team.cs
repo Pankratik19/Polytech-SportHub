@@ -4,7 +4,6 @@ namespace SportHubApi.Models
     [Table("teams")]
     public class Team
     {
-
         [Column("id")]
         public int Id { get; set; }
 
@@ -17,6 +16,12 @@ namespace SportHubApi.Models
         [Column("sport_id")]
         public required int SportId { get; set; }
         public required Sport Sport { get; set; }
+
+        [Column("coach_id")]
+        public int? CoachId { get; set; }
+        public Coach? Coach { get; set; }
+
         public required ICollection<Player> Players { get; set; }
     }
+
 }
