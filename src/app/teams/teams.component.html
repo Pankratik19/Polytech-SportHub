@@ -1,91 +1,35 @@
 <div class="main-container">
-    <div class="team-card">
-        <div class="left-container">
-            <div class="title">
-                <h1>Volleyball team</h1>
-                <img src="assets/images/gender_male.png" alt="">
-            </div>
-            <div class="coach">
-                <div class="img">
-                    <img src="assets/images/profile.jpg" alt="img">
-                </div>
-                    <h3>Tihonovskiy Oleksandr Oleksandrovich</h3>
-            </div>
+  <div class="team-card" *ngFor="let team of teams">
+    <div class="left-container">
+      <div class="title">
+        <h1>{{ team.name }} team</h1>
+        <img
+          [src]="
+            team.gender.toLowerCase() === 'male'
+              ? 'assets/images/gender_male.png'
+              : 'assets/images/gender_female.png'
+          "
+          alt="gender"
+        />
+      </div>
+      <div class="coach" *ngIf="team.coach">
+        <div class="img">
+          <img
+            [src]="
+              team.coach.photo ? team.coach.photo : 'assets/images/profile.jpg'
+            "
+            alt="Coach"
+          />
         </div>
-        <div class="right-container">
-            <div class="player-card">
-                <img src="assets/images/profile.jpg" alt="">
-                <span>name</span>
-            </div>
-            <div class="player-card">
-                <img src="assets/images/profile.jpg" alt="">
-                <span>name</span>
-            </div>
-            <div class="player-card">
-                <img src="assets/images/profile.jpg" alt="">
-                <span>name</span>
-            </div>
-            <div class="player-card">
-                <img src="assets/images/profile.jpg" alt="">
-                <span>name</span>
-            </div>
-            <div class="player-card">
-                <img src="assets/images/profile.jpg" alt="">
-                <span>name</span>
-            </div>
-            <div class="player-card">
-                <img src="assets/images/profile.jpg" alt="">
-                <span>name</span>
-            </div>
-            <div class="player-card">
-                <img src="assets/images/profile.jpg" alt="">
-                <span>name</span>
-            </div>
-            <div class="player-card">
-                <img src="assets/images/profile.jpg" alt="">
-                <span>name</span>
-            </div>
-        </div>
+        <h3>{{ team.coach.name }}</h3>
+      </div>
     </div>
 
-    <div class="team-card">
-        <div class="left-container">
-            <div class="title">
-                <h1>Basketball team</h1>
-                <img src="assets/images/gender_female.png" alt="">
-            </div>
-            <div class="coach">
-                <div class="img">
-                    <img src="assets/images/profile.jpg" alt="img">
-                </div>
-                    <h3>Sarah Johnson</h3>
-            </div>
-        </div>
-        <div class="right-container">
-            <div class="player-card">
-                <img src="assets/images/profile.jpg" alt="">
-                <span>name</span>
-            </div>
-            <div class="player-card">
-                <img src="assets/images/profile.jpg" alt="">
-                <span>name</span>
-            </div>
-            <div class="player-card">
-                <img src="assets/images/profile.jpg" alt="">
-                <span>name</span>
-            </div>
-            <div class="player-card">
-                <img src="assets/images/profile.jpg" alt="">
-                <span>name</span>
-            </div>
-            <div class="player-card">
-                <img src="assets/images/profile.jpg" alt="">
-                <span>name</span>
-            </div>
-            <div class="player-card">
-                <img src="assets/images/profile.jpg" alt="">
-                <span>name</span>
-            </div>
-        </div>
+    <div class="right-container">
+      <div class="player-card" *ngFor="let player of team.players">
+        <img src="assets/images/profile.jpg" alt="Player" />
+        <span>{{ player.name }}</span>
+      </div>
     </div>
+  </div>
 </div>
