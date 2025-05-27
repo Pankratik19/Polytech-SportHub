@@ -4,4 +4,5 @@ export interface Player {
   groupNumber: string;
   phoneNumber: string;
   teamId: number;
+  photo?: string;
 }

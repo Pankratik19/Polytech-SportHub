@@ -37,5 +37,46 @@ namespace SportsApi.Controllers
 
             return Ok(sports);
         }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<object>> GetSportById(int id)
+        {
+            var sport = await _context.Sports
+                .Include(s => s.Teams)
+                    .ThenInclude(t => t.Coach)
+                .Include(s => s.Teams)
+                    .ThenInclude(t => t.Players)
+                .FirstOrDefaultAsync(s => s.Id == id);
+
+            if (sport == null)
+                return NotFound();
+
+            return Ok(new
+            {
+                sport.Id,
+                sport.Name,
+                sport.Photo,
+                Teams = sport.Teams.Select(t => new
+                {
+                    t.Id,
+                    t.Name,
+                    t.Gender,
+                    Coach = t.Coach == null ? null : new
+                    {
+                        t.Coach.Id,
+                        t.Coach.Name,
+                        t.Coach.Photo
+                    },
+                    Players = t.Players.Select(p => new
+                    {
+                        p.Id,
+                        p.Name,
+                        p.GroupNumber,
+                        p.PhoneNumber
+                    }).ToList()
+                }).ToList()
+            });
+        }
+
     }
 }

@@ -17,7 +17,7 @@ export const routes: Routes = [
       { path: 'events', component: EventsComponent },
       { path: 'coaches', component: CoachesComponent },
       { path: 'teams', component: TeamsComponent },
-      { path: 'sport-details', component: SportDetailsComponent },
+      { path: 'sport-details/:id', component: SportDetailsComponent },
       { path: 'event-details', component: EventDetailsComponent },
       { path: 'event-results', component: EventResultsComponent },
     ],

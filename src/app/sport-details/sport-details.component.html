@@ -1,57 +1,51 @@
-<div class="main-container">
+<div class="main-container" *ngIf="sport">
   <div class="left-container">
-    <h1>Sport Name</h1>
+    <h1>{{ sport.name }}</h1>
     <div class="SportInfo">
       <div class="img-container">
-        <img src="assets/images/ball.png" alt="" />
+        <img
+          [src]="sport.photo || 'assets/images/ball.png'"
+          alt="{{ sport.name }}"
+        />
       </div>
       <div class="info-container">
-        <p>
-          Волейбол — це танець командного духу на межі неба й землі. М’яч
-          летить, як блискавка, а кожен дотик — це крок до перемоги. Тут важлива
-          не тільки сила, а й відчуття ритму, злагодженість і миттєва реакція.
-          Волейбол — гра, де кожен політ м’яча створює нову історію.
-        </p>
+        <p>{{ sport.name || "No description available." }}</p>
       </div>
     </div>
+
     <div class="TeamInfo">
-      <div class="team-card">
+      <div class="team-card" *ngFor="let team of sport.teams">
         <div class="left-container">
           <div class="title">
-            <h1>Volleyball team</h1>
-            <img src="assets/images/gender_male.png" alt="" />
+            <h1>{{ team.name }}</h1>
+            <img
+              [src]="
+                team.gender === 'Male'
+                  ? 'assets/images/gender_male.png'
+                  : 'assets/images/gender_female.png'
+              "
+              alt="{{ team.gender }}"
+            />
           </div>
-          <div class="coach">
+
+          <div class="coach" *ngIf="team.coach">
             <div class="img">
-              <img src="assets/images/profile.jpg" alt="img" />
+              <img
+                [src]="team.coach.photo || 'assets/images/profile.jpg'"
+                alt="{{ team.coach.name }}"
+              />
             </div>
-            <h3>Tihonovskiy Oleksandr Oleksandrovich</h3>
+            <h3>{{ team.coach.name }}</h3>
           </div>
         </div>
+
         <div class="right-container">
-          <div class="player-card">
-            <img src="assets/images/profile.jpg" alt="" />
-            <span>name</span>
-          </div>
-          <div class="player-card">
-            <img src="assets/images/profile.jpg" alt="" />
-            <span>name</span>
-          </div>
-          <div class="player-card">
-            <img src="assets/images/profile.jpg" alt="" />
-            <span>name</span>
-          </div>
-          <div class="player-card">
-            <img src="assets/images/profile.jpg" alt="" />
-            <span>name</span>
-          </div>
-          <div class="player-card">
-            <img src="assets/images/profile.jpg" alt="" />
-            <span>name</span>
-          </div>
-          <div class="player-card">
-            <img src="assets/images/profile.jpg" alt="" />
-            <span>name</span>
+          <div class="player-card" *ngFor="let player of team.players">
+            <img
+              [src]="player.photo || 'assets/images/profile.jpg'"
+              alt="{{ player.name }}"
+            />
+            <span>{{ player.name }}</span>
           </div>
         </div>
       </div>
