@@ -13,4 +13,8 @@ export class SportService {
   getSports(): Observable<Sport[]> {
     return this.http.get<Sport[]>(this.apiUrl);
   }
+
+  getSportById(id: number): Observable<Sport> {
+    return this.http.get<Sport>(`${this.apiUrl}/${id}`);
+  }
 }
