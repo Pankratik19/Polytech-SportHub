@@ -38,6 +38,14 @@ namespace SportHubApi.Data
                 .Property(e => e.Direction)
                 .HasConversion<string>();
 
+            modelBuilder.Entity<Event>()
+                .Property(e => e.Gender)
+                .HasConversion<string>();
+
+                modelBuilder.Entity<Team>()
+                .Property(t => t.Gender)
+                .HasConversion<string>();
+
             // MatchResultStatus (якщо є enum у Match чи EventResult — додай його тут)
 
             base.OnModelCreating(modelBuilder);

@@ -10,3 +10,9 @@ export interface Team {
   coach?: Coach;
   players: Player[];
 }
+
+export enum Gender {
+  Male = 'Male',
+  Female = 'Female',
+  Unisex = 'Unisex',
+}

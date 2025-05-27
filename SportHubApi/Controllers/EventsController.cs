@@ -46,5 +46,41 @@ namespace SportHubApi.Controllers
 
             return Ok(events);
         }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<object>> GetEvent(int id)
+        {
+            var evt = await _context.Events
+                .Include(e => e.Sport)
+                .Include(e => e.Matches)
+                .Include(e => e.EventResults)
+                .Include(e => e.JoinEventRequest)
+                .Where(e => e.Id == id)
+                .Select(e => new
+                {
+                    e.Id,
+                    e.Name,
+                    e.Description,
+                    e.StartDate,
+                    e.EndDate,
+                    e.TypeEvent,
+                    e.Format,
+                    e.Unit,
+                    e.Direction,
+                    e.Gender,
+                    Sport = new
+                    {
+                        e.Sport.Id,
+                        e.Sport.Name,
+                        e.Sport.Photo
+                    }
+                })
+                .FirstOrDefaultAsync();
+
+            if (evt == null)
+                return NotFound();
+
+            return Ok(evt);
+        }
     }
 }

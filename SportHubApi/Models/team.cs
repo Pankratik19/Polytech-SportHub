@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using SportHubApi.Models.Enums;
 namespace SportHubApi.Models
 {
     [Table("teams")]
@@ -11,7 +12,7 @@ namespace SportHubApi.Models
         public required string Name { get; set; }
 
         [Column("gender")]
-        public required string Gender { get; set; }
+        public required Gender Gender { get; set; }
 
         [Column("sport_id")]
         public required int SportId { get; set; }
