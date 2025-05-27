@@ -13,7 +13,6 @@ import { CommonModule } from '@angular/common';
 })
 export class SportDetailsComponent implements OnInit {
   sport?: Sport;
-  loading = true;
   errorMessage = '';
 
   constructor(
@@ -25,18 +24,15 @@ export class SportDetailsComponent implements OnInit {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     if (!id) {
       this.errorMessage = 'Invalid sport ID';
-      this.loading = false;
       return;
     }
 
     this.sportService.getSportById(id).subscribe({
       next: (data) => {
         this.sport = data;
-        this.loading = false;
       },
       error: (err) => {
         this.errorMessage = 'Failed to load sport details';
-        this.loading = false;
         console.error(err);
       },
     });

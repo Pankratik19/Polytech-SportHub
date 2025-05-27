@@ -1,3 +1,6 @@
+import { Sport } from "../sports/sport";
+import { Gender } from "../teams/team";
+
 export interface Event {
   id: number;
   name: string;
@@ -8,7 +11,9 @@ export interface Event {
   format?: EventFormat;
   unit?: ResultUnit;
   direction?: Direction;
+  gender?: Gender;
   sportId: number;
+  sport: Sport;
 }
 
 export enum EventType {

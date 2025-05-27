@@ -33,6 +33,9 @@ namespace SportHubApi.Models
         [Column("direction")]
         public Direction? Direction { get; set; }
 
+        [Column("gender")]
+        public Gender? Gender { get; set; }
+
         [Column("sport_id")]
         public int SportId { get; set; }
 
