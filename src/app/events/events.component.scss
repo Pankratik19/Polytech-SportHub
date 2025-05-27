@@ -8,6 +8,7 @@
 }
 
 .half-container {
+  min-width: 50%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -16,6 +17,7 @@
 
 .event-group-container {
   height: 100%;
+  min-width: 100%;
   border-style: solid;
   border-width: 2px;
   border-color: rgb(183, 183, 183);
