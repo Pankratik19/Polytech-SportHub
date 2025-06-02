@@ -6,7 +6,8 @@ import { TeamsComponent } from './teams/teams.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { SportDetailsComponent } from './sport-details/sport-details.component';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
-import { EventResultsComponent } from './events/event-results/event-results.component';
+import { TableResultsComponent } from './events/event-results/table/table-results.component';
+import { TournamentGridComponent } from './events/event-results/tournament/tournament-grid.component';
 
 export const routes: Routes = [
   {
@@ -19,7 +20,8 @@ export const routes: Routes = [
       { path: 'teams', component: TeamsComponent },
       { path: 'sport-details/:id', component: SportDetailsComponent },
       { path: 'event-details/:id', component: EventDetailsComponent },
-      { path: 'event-results', component: EventResultsComponent },
+      { path: 'table-results/:id', component: TableResultsComponent },
+      { path: 'tournament-results', component: TournamentGridComponent },
     ],
   },
 ];
