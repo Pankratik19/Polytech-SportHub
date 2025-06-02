@@ -33,6 +33,5 @@ namespace SportHubApi.Models
         [Column("sport_id")]
         public int SportId { get; set; }
 
-        public required Sport Sport { get; set; }
     }
 }

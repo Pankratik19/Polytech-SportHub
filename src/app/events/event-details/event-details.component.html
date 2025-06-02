@@ -48,24 +48,65 @@
 
   <div class="right-container">
     <h2>Request to join the event</h2>
-    <form action="">
+    <form [formGroup]="form" (ngSubmit)="submitJoinRequest()">
       <div class="field">
-        <label for="memberName">Name</label>
-        <input type="text" id="memberName" />
+        <label for="memberNames">Member Names</label>
+        <input type="text" id="memberNames" formControlName="memberNames" />
+        <div
+          *ngIf="
+            form.get('memberNames')?.invalid && form.get('memberNames')?.touched
+          "
+          class="error"
+        >
+          Member Names are required.
+        </div>
       </div>
+
       <div class="field">
-        <label for="phoneNumber">Phone Number</label>
-        <input type="text" id="phoneNumber" />
+        <label for="memberCount">Member Count</label>
+        <input
+          type="number"
+          id="memberCount"
+          formControlName="memberCount"
+          min="1"
+        />
+        <div
+          *ngIf="
+            form.get('memberCount')?.invalid && form.get('memberCount')?.touched
+          "
+          class="error"
+        >
+          Member Count is required and must be greater than 0.
+        </div>
       </div>
+
       <div class="field">
-        <label for="groupNumber">Group</label>
-        <input type="text" id="groupNumber" />
+        <label for="groupNumber">Group Number</label>
+        <input type="text" id="groupNumber" formControlName="groupNumber" />
+        <div
+          *ngIf="
+            form.get('groupNumber')?.invalid && form.get('groupNumber')?.touched
+          "
+          class="error"
+        >
+          Group Number is required.
+        </div>
       </div>
+
       <div class="field">
-        <label for="additionalInfo">Information</label>
-        <input type="text" id="additionalInfo" />
+        <label for="email">Email</label>
+        <input type="email" id="email" formControlName="email" />
+        <div
+          *ngIf="form.get('email')?.invalid && form.get('email')?.touched"
+          class="error"
+        >
+          Please enter a valid email address.
+        </div>
       </div>
-      <button class="buttonForm">Submit</button>
+
+      <button class="buttonForm" type="submit" [disabled]="form.invalid">
+        Submit
+      </button>
     </form>
   </div>
 </div>
