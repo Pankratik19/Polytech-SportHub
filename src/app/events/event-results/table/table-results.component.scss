@@ -1,0 +1,136 @@
+.main-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.left-container {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.right-container {
+  width: 40%;
+  height: 100%;
+  padding-left: 40px;
+  border-left: 2px dashed rgb(205, 203, 189);
+
+  h2 {
+    margin-bottom: 60px;
+    text-align: center;
+  }
+}
+
+.table-container {
+  padding: 1rem;
+  margin-right: 40px;
+  border-radius: 8px;
+  background-color: #1d1d1d;
+  color: #fff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  color: #1d1d1d;
+}
+
+thead {
+  background-color: #1d1d1d;
+  color: #fff;
+
+  th {
+    padding: 12px 15px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-align: left;
+    border-bottom: 2px solid #444;
+  }
+}
+
+tbody {
+  tr {
+    border-bottom: 1px solid #444;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #d3d3d3;
+      cursor: pointer;
+    }
+
+    td {
+      padding: 10px 15px;
+      font-size: 1rem;
+      border-right: 1px solid #2c2c2c;
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+  }
+}
+
+.error-message {
+  margin-top: 1rem;
+  color: #ff4c4c;
+  font-weight: 600;
+}
+
+.podium {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 1rem;
+
+  .place {
+    min-width: 100px;
+    padding: 1rem 0.5rem;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    background-color: #1a1a1a;
+    color: #fff;
+    position: relative;
+
+    .number {
+      display: block;
+      font-size: 1.5rem;
+    }
+
+    .name {
+      font-size: 1rem;
+    }
+
+    &.first {
+      min-height: 160px;
+      background-color: rgba(251, 227, 91, 0.45);
+      border: 2px solid gold;
+      color: #000;
+    }
+
+    &.second {
+      min-height: 130px;
+      background-color: rgba(168, 168, 168, 0.45);
+      border: 2px solid silver;
+      color: #000;
+    }
+
+    &.third {
+      min-height: 80px;
+      background-color: #cd803284;
+      border: 2px solid #cd8032;
+      color: #000;
+    }
+  }
+}

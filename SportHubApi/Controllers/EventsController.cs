@@ -82,5 +82,92 @@ namespace SportHubApi.Controllers
 
             return Ok(evt);
         }
+
+        [HttpGet("{eventId}/table-results")]
+        public async Task<ActionResult<IEnumerable<object>>> GetAllResultsByEventId(int eventId)
+        {
+            var eventExists = await _context.Events.AnyAsync(e => e.Id == eventId);
+            if (!eventExists)
+                return NotFound($"Event with ID {eventId} not found.");
+
+            var results = await _context.EventResults
+                .Where(er => er.EventId == eventId)
+                .Include(er => er.Player)
+                .Include(er => er.Event)
+                .Select(er => new
+                {
+                    er.Id,
+                    er.Result,
+
+                    Event = new
+                    {
+                        er.Event.Id,
+                        er.Event.Name,
+                        er.Event.TypeEvent,
+                        er.Event.Direction,
+                        er.Event.Unit,
+                        er.Event.StartDate,
+                        er.Event.EndDate
+                    },
+
+                    Player = new
+                    {
+                        er.Player.Id,
+                        er.Player.Name,
+                        er.Player.GroupNumber
+                    }
+                })
+                .ToListAsync();
+
+            return Ok(results);
+        }
+
+        [HttpGet("{eventId}/tournament-results")]
+        public async Task<ActionResult<IEnumerable<object>>> GetMatchesByEventId(int eventId)
+        {
+            var eventExists = await _context.Events.AnyAsync(e => e.Id == eventId);
+            if (!eventExists)
+                return NotFound($"Event with ID {eventId} not found.");
+
+            var matches = await _context.Matches
+                .Where(m => m.EventId == eventId)
+                .Include(m => m.Player1)
+                .Include(m => m.Player2)
+                .Include(m => m.Winner)
+                .Include(m => m.NextMatch)
+                .Select(m => new
+                {
+                    m.Id,
+                    m.Round,
+                    m.MatchNumber,
+
+                    Player1 = m.Player1 != null ? new
+                    {
+                        m.Player1.Id,
+                        m.Player1.Name
+                    } : null,
+
+                    Player2 = m.Player2 != null ? new
+                    {
+                        m.Player2.Id,
+                        m.Player2.Name
+                    } : null,
+
+                    Winner = m.Winner != null ? new
+                    {
+                        m.Winner.Id,
+                        m.Winner.Name
+                    } : null,
+
+                    NextMatch = m.NextMatch != null ? new
+                    {
+                        m.NextMatch.Id,
+                        m.PositionInNextMatch
+                    } : null
+                })
+                .ToListAsync();
+
+            return Ok(matches);
+        }
     }
 }

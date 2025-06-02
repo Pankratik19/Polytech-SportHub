@@ -1,0 +1,53 @@
+<div class="main-container">
+  <div class="left-container">
+    <h2>{{ tableResults[0].event.name }} - Results</h2>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Group</th>
+            <th>Result</th>
+            <th>Units</th>
+            <th>Place</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let result of tableResults; let i = index">
+            <td>{{ result.player.name }}</td>
+            <td>{{ result.player.groupNumber }}</td>
+            <td>{{ result.result }}</td>
+            <td>{{ result.event.unit }}</td>
+            <td>{{ i + 1 }}{{ getPlaceSuffix(i + 1) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="right-container">
+    <h2>Top results</h2>
+    <div class="podium">
+      <div class="place second">
+        <span class="number">2nd</span>
+        <span class="name" *ngIf="tableResults.length > 1">{{
+          tableResults[1].player.name
+        }}</span>
+      </div>
+
+      <div class="place first">
+        <span class="number">1st</span>
+        <span class="name" *ngIf="tableResults.length > 0">{{
+          tableResults[0].player.name
+        }}</span>
+      </div>
+
+      <div class="place third">
+        <span class="number">3rd</span>
+        <span class="name" *ngIf="tableResults.length > 2">{{
+          tableResults[2].player.name
+        }}</span>
+      </div>
+    </div>
+  </div>
+</div>
