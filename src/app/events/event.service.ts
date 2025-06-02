@@ -4,6 +4,7 @@ import { Event } from './event';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { TableResult } from './event-results/table/table-result';
+import { JoinEvent } from './joinEvent';
 
 @Injectable({ providedIn: 'root' })
 export class EventService {
@@ -21,5 +22,13 @@ export class EventService {
 
   getTableResultsByEventId(id: number): Observable<TableResult[]> {
     return this.http.get<TableResult[]>(`${this.apiUrl}/${id}/table-results`);
+  }
+
+  submitJoinEventRequest(
+    eventId: number,
+    requestData: JoinEvent
+  ): Observable<JoinEvent> {
+    const url = `${this.apiUrl}/${eventId}/joinEvent`;
+    return this.http.post<JoinEvent>(url, requestData);
   }
 }

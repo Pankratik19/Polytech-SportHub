@@ -3,22 +3,37 @@ import { Event } from '../event';
 import { ActivatedRoute } from '@angular/router';
 import { EventService } from '../event.service';
 import { CommonModule } from '@angular/common';
+import {
+  ReactiveFormsModule,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-event-details',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './event-details.component.html',
   styleUrl: './event-details.component.scss',
 })
 export class EventDetailsComponent {
-  event?: Event;
+  event!: Event;
   errorMessage = '';
+  form: FormGroup;
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly eventService: EventService
-  ) {}
+    private readonly eventService: EventService,
+    private readonly formBuilder: FormBuilder
+  ) {
+    this.form = this.formBuilder.group({
+      memberNames: ['', Validators.required],
+      memberCount: [null, Validators.required],
+      groupNumber: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+    });
+  }
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
@@ -71,5 +86,24 @@ export class EventDetailsComponent {
       default:
         return 'assets/icons/gender_unknown.png';
     }
+  }
+
+  submitJoinRequest(): void {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+
+    const eventId = Number(this.route.snapshot.paramMap.get('id'));
+    const requestData = this.form.value;
+
+    this.eventService.submitJoinEventRequest(eventId, requestData).subscribe({
+      next: (response) => {
+        this.form.reset();
+      },
+      error: (error) => {
+        console.error('Error submitting request', error);
+      },
+    });
   }
 }
