@@ -8,8 +8,8 @@
           alt="{{ sport.name }}"
         />
       </div>
-      <div class="info-container">
-        <p>{{ sport.name || "No description available." }}</p>
+      <div class="info-container" *ngFor="let info of sport.info">
+        <p>{{ info.text || "No description available." }}</p>
       </div>
     </div>
 

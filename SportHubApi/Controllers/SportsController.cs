@@ -46,6 +46,7 @@ namespace SportsApi.Controllers
                     .ThenInclude(t => t.Coach)
                 .Include(s => s.Teams)
                     .ThenInclude(t => t.Players)
+                .Include(s => s.Info) // Include Info
                 .FirstOrDefaultAsync(s => s.Id == id);
 
             if (sport == null)
@@ -56,6 +57,12 @@ namespace SportsApi.Controllers
                 sport.Id,
                 sport.Name,
                 sport.Photo,
+                Info = sport.Info?.Select(info => new
+                {
+                    info.Id,
+                    info.Text,
+                    info.Photo
+                }).ToList(),
                 Teams = sport.Teams.Select(t => new
                 {
                     t.Id,
