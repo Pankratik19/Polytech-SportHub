@@ -1,0 +1,91 @@
+h1 {
+  justify-self: center;
+}
+
+.table-container {
+  padding: 1rem;
+  margin-right: 40px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  border: solid 1px black;
+  color: #000000;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  color: #1d1d1d;
+}
+
+thead {
+  background-color: #ffffff;
+  color: #000000;
+
+  th {
+    padding: 12px 15px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-align: left;
+    border-bottom: 2px solid #444;
+  }
+}
+
+tbody {
+  tr {
+    border-bottom: 1px solid #444;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #f9f9f9;
+      cursor: pointer;
+    }
+
+    td {
+      padding: 10px 15px;
+      font-size: 1rem;
+      border-right: 1px solid #2c2c2c;
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+  }
+}
+
+.add-button {
+  background-color: #000000;
+  color: #fff;
+  border-radius: 50%;
+  border: none;
+  width: 40px;
+  height: 40px;
+  font-size: 14px;
+  margin-left: 80%;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+.edit-button {
+  background: none;
+  border: none;
+  margin-left: 72%;
+  font-size: 16px;
+  cursor: pointer;
+}
+.delete-button {
+  background: none;
+  border: none;
+  margin-left: 20px;
+  font-size: 16px;
+  cursor: pointer;
+}

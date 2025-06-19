@@ -3,12 +3,12 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-admin-header',
+  selector: 'app-sport-form',
   standalone: true,
   imports: [RouterModule, CommonModule],
-  templateUrl: './admin-header.component.html',
-  styleUrl: './admin-header.component.scss',
+  templateUrl: './sport-form.component.html',
+  styleUrl: './sport-form.component.scss',
 })
-export class AdminHeaderComponent {
+export class SportFormComponent {
   constructor() {}
 }

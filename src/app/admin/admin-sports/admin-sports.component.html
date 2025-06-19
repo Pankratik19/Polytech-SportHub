@@ -1,1 +1,27 @@
 <h1>Admin sports</h1>
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>№</th>
+        <th>Name</th>
+        <th>
+          <button class="add-button">
+            <i class="fas fa-plus"></i>
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sport of sports; let i = index">
+        <td>{{ i }}</td>
+        <td>{{ sport.name }}</td>
+        <td>
+          <button class="edit-button"><i class="fas fa-pen"></i></button
+          ><button class="delete-button"><i class="fas fa-minus"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<router-outlet></router-outlet>
