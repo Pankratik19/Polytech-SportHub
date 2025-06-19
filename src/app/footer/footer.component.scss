@@ -48,3 +48,45 @@
     color: white;
   }
 }
+
+.admin-button{
+  width: 50px;
+  border: none;
+  margin-bottom: 10px;
+  background: none;
+}
+
+.admin-login-form {
+  position: fixed;
+  bottom: 45px;
+  left: 20px;
+  background: #fff;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  border-radius: 8px;
+}
+
+.admin-login-form input {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+}
+
+.admin-login-form button {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.admin-login-form .error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
