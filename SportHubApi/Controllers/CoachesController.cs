@@ -37,6 +37,33 @@ namespace SportHubApi.Controllers
 
             return Ok(coaches);
         }
+
+        [HttpPost("{id}/upload-photo")]
+        public async Task<IActionResult> UploadCoachPhoto(int id, IFormFile file)
+        {
+            var coach = await _context.Coach.FindAsync(id);
+            if (coach == null)
+                return NotFound("Coach not found");
+
+            if (file == null || file.Length == 0)
+                return BadRequest("No file uploaded");
+
+            var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
+            var fileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
+            var filePath = Path.Combine(uploadsFolder, fileName);
+
+            // Save file
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
+            // Save file name to DB
+            coach.Photo = fileName;
+            await _context.SaveChangesAsync();
+
+            return Ok(new { photo = fileName });
+        }
     }
 
 }

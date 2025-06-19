@@ -22,6 +22,8 @@ export class SportDetailsComponent implements OnInit {
   errorMessage = '';
   form: FormGroup;
 
+  selectedFile: File | null = null;
+
   constructor(
     private readonly route: ActivatedRoute,
     private readonly sportService: SportService,
@@ -71,5 +73,27 @@ export class SportDetailsComponent implements OnInit {
         console.error('Error submitting request', error);
       },
     });
+  }
+
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.selectedFile = input.files[0];
+    }
+  }
+
+  upload(sportId: number) {
+    if (!this.selectedFile) return;
+
+    this.sportService.uploadPhoto(sportId, this.selectedFile).subscribe({
+      next: (res) => console.log('Upload success', res),
+      error: (err) => console.error('Upload error', err),
+    });
+  }
+
+  getSportPhotoUrl(photo: string | null): string {
+    return photo
+      ? `http://localhost:5264/uploads/${photo}`
+      : 'assets/images/ball.png';
   }
 }
