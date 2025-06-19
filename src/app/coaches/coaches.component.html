@@ -2,12 +2,16 @@
   <div class="coach-card" *ngFor="let coach of coaches">
     <div class="top-container">
       <div class="img">
-        <img [src]="coach.photo || 'assets/images/profile.jpg'" alt="Coach" />
+        <img [src]="getCoachPhotoUrl(coach.photo)" alt="{{ coach.name }}" />
       </div>
       <div class="info">
         <h3>{{ coach.name }}</h3>
         <span>{{ coach.additionalInfo }}</span>
       </div>
+      <div>
+      <input type="file" (change)="onFileSelected($event)" />
+      <button (click)="upload(coach.id)">Upload</button>
+    </div>
     </div>
     <div class="sports">
       <div class="sport" *ngFor="let sport of coach.sports">

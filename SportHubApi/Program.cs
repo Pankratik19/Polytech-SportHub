@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using SportHubApi.Data;
 using System.Text.Json.Serialization;
 
@@ -27,6 +28,14 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 var app = builder.Build();
 
 app.UseCors("AllowLocalhost");
+
+// Enable serving static files from the "Uploads" folder
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), "Uploads")),
+    RequestPath = "/uploads"
+});
 
 app.UseHttpsRedirection();
 

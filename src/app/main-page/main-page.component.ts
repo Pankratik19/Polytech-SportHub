@@ -27,4 +27,10 @@ export class MainPageComponent {
       },
     });
   }
+
+  getSportPhotoUrl(photo: string | null): string {
+    return photo
+      ? `http://localhost:5264/uploads/${photo}`
+      : 'assets/images/ball.png';
+  }
 }

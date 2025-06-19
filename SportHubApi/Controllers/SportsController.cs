@@ -85,5 +85,30 @@ namespace SportsApi.Controllers
             });
         }
 
+        [HttpPost("{id}/upload-photo")]
+        public async Task<IActionResult> UploadSportPhoto(int id, IFormFile file)
+        {
+            var sport = await _context.Sports.FindAsync(id);
+            if (sport == null)
+                return NotFound("Sport not found");
+
+            if (file == null || file.Length == 0)
+                return BadRequest("No file uploaded");
+
+            var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
+            var fileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
+            var filePath = Path.Combine(uploadsFolder, fileName);
+
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
+            sport.Photo = fileName;
+            await _context.SaveChangesAsync();
+
+            return Ok(new { photo = fileName });
+        }
+
     }
 }

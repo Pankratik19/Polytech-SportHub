@@ -12,6 +12,7 @@ import { Coach } from './coach';
 })
 export class CoachesComponent {
   coaches: Coach[] = [];
+  selectedFile: File | null = null;
 
   constructor(private readonly coachService: CoachService) {}
 
@@ -25,5 +26,27 @@ export class CoachesComponent {
         console.error('Failed to load coaches', err);
       },
     });
+  }
+
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.selectedFile = input.files[0];
+    }
+  }
+
+  upload(sportId: number) {
+    if (!this.selectedFile) return;
+
+    this.coachService.uploadPhoto(sportId, this.selectedFile).subscribe({
+      next: (res) => console.log('Upload success', res),
+      error: (err) => console.error('Upload error', err),
+    });
+  }
+
+  getCoachPhotoUrl(photo: string | null): string {
+    return photo
+      ? `http://localhost:5264/uploads/${photo}`
+      : 'assets/images/profile.jpg';
   }
 }

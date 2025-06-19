@@ -26,4 +26,13 @@ export class SportService {
     const url = `${this.apiUrl}/${sportId}/joinTeam`;
     return this.http.post<JoinTeam>(url, requestData);
   }
+
+  uploadPhoto(sportId: number, file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const url = `${this.apiUrl}/${sportId}/upload-photo`; // adjust this to your backend route
+
+    return this.http.post(url, formData);
+  }
 }

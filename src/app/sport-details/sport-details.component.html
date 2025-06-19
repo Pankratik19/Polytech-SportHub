@@ -3,15 +3,16 @@
     <h1>{{ sport.name }}</h1>
     <div class="SportInfo">
       <div class="img-container">
-        <img
-          [src]="sport.photo || 'assets/images/ball.png'"
-          alt="{{ sport.name }}"
-        />
+        <img [src]="getSportPhotoUrl(sport.photo)" alt="{{ sport.name }}" />
       </div>
       <div class="info-container" *ngFor="let info of sport.info">
         <p>{{ info.text || "No description available." }}</p>
-      </div>
+      </div><div>
+      <input type="file" (change)="onFileSelected($event)" />
+      <button (click)="upload(sport.id)">Upload</button>
     </div>
+    </div>
+    
 
     <div class="TeamInfo">
       <div class="team-card" *ngFor="let team of sport.teams">
