@@ -25,7 +25,10 @@
   min-height: 350px;
 
   img {
-    width: 300px;
+    width: 250px;
+    margin: 20px;
+    border: 1px rgb(155, 155, 155) solid;
+    border-radius: 16px;
   }
 
   .info {
@@ -33,8 +36,9 @@
     flex-direction: column;
     align-items: center;
     font-size: 18px;
-    margin-top: 100px;
+    padding-top: 20px;
     margin-right: 40px;
+    width: 100%;
   }
 }
 

@@ -9,10 +9,10 @@ namespace SportHubApi.Models
         public int Id { get; set; }
 
         [Column("player_id")]
-        public int PlayerId { get; set; }
+        public int? PlayerId { get; set; }
 
         [Column("event_id")]
-        public int EventId { get; set; }
+        public int? EventId { get; set; }
 
         [Column("result")]
         public decimal Result { get; set; }

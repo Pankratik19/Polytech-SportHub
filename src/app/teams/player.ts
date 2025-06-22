@@ -1,8 +1,10 @@
+import { Team } from "./team";
+
 export interface Player {
   id: number;
   name: string;
   groupNumber: string;
   phoneNumber: string;
-  teamId: number;
+  team: Team;
   photo?: string;
 }

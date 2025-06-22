@@ -1,0 +1,60 @@
+<h1>Join team requests</h1>
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>№</th>
+        <th>Name</th>
+        <th>Group</th>
+        <th>Info</th>
+        <th>Date</th>
+        <th>Sport name</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let teamRequest of teamRequests; let i = index"
+        [class.inactive]="
+          teamRequest.status === 'Approved' || teamRequest.status === 'Rejected'
+        "
+      >
+        <td>{{ i + 1 }}</td>
+        <td>{{ teamRequest.memberName }}</td>
+        <td>{{ teamRequest.groupNumber }}</td>
+        <td>{{ teamRequest.additionalInfo }}</td>
+        <td>{{ teamRequest.submittedAt | date : "dd.MM.yyyy" }}</td>
+        <td>{{ getSportNameById(teamRequest.sportId) }}</td>
+        <td>{{ teamRequest.email }}</td>
+        <td>{{ teamRequest.status }}</td>
+        <td>
+          <button
+            class="approve-button"
+            (click)="approveRequest(teamRequest.id)"
+            [ngClass]="{
+              hidden:
+                teamRequest.status === 'Approved' ||
+                teamRequest.status === 'Rejected'
+            }"
+          >
+            <i class="fas fa-check"></i>
+          </button>
+          <button
+            class="decline-button"
+            (click)="declineRequest(teamRequest.id)"
+            [ngClass]="{
+              hidden:
+                teamRequest.status === 'Approved' ||
+                teamRequest.status === 'Rejected'
+            }"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<router-outlet></router-outlet>

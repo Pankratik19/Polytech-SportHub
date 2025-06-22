@@ -2,10 +2,10 @@ import { Team } from '../teams/team';
 import { Info } from './info';
 
 export interface Sport {
-  id: number;
+  id?: number;
   name: string;
   photo: string;
-  coach_id: number;
+  coachId?: number;
   info: Info[];
   teams?: Team[];
 }

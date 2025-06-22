@@ -1,0 +1,29 @@
+<h1>Admin sports</h1>
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>№</th>
+        <th>Image</th>
+        <th>Name</th>
+        <th>
+          <button class="add-button" [routerLink]="['/admin-main', 'sport-add']">
+            <i class="fas fa-plus"></i>
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sport of sports; let i = index">
+        <td>{{ i+1 }}</td>
+        <td><img class="sport-img" [src]="getSportPhotoUrl(sport.photo)" alt="{{ sport.name }}" /></td>
+        <td>{{ sport.name }}</td>
+        <td>
+          <button class="edit-button" [routerLink]="['/admin-main', 'sport-edit', sport.id]"><i class="fas fa-pen"></i></button
+          ><button class="delete-button" (click)="sport.id !== undefined && deleteSport(sport.id)"><i class="fas fa-minus"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<router-outlet></router-outlet>

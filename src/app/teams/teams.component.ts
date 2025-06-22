@@ -26,4 +26,10 @@ export class TeamsComponent {
       },
     });
   }
+
+  getCoachPhotoUrl(photo: string | null): string {
+    return photo
+      ? `http://localhost:5264/uploads/${photo}`
+      : 'assets/images/profile.jpg';
+  }
 }

@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { TableResult } from './event-results/table/table-result';
 import { JoinEvent } from './joinEvent';
+import { Match } from './event-results/tournament/match';
 
 @Injectable({ providedIn: 'root' })
 export class EventService {
@@ -22,6 +23,10 @@ export class EventService {
 
   getTableResultsByEventId(id: number): Observable<TableResult[]> {
     return this.http.get<TableResult[]>(`${this.apiUrl}/${id}/table-results`);
+  }
+
+  getTournamentMatchesByEventId(eventId: number): Observable<Match[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/${eventId}/tournament-results`);
   }
 
   submitJoinEventRequest(

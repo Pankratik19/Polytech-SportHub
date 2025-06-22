@@ -8,6 +8,16 @@ import { SportDetailsComponent } from './sport-details/sport-details.component';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
 import { TableResultsComponent } from './events/event-results/table/table-results.component';
 import { TournamentGridComponent } from './events/event-results/tournament/tournament-grid.component';
+import { AdminMainComponent } from './admin/admin-main/admin-main.component';
+import { AdminSportsComponent } from './admin/admin-sports/admin-sports.component';
+import { AdminEventsComponent } from './admin/admin-events/admin-events.component';
+import { AdminEventsResultsComponent } from './admin/admin-events-results/admin-events-results.component';
+import { AdminCoachesComponent } from './admin/admin-coaches/admin-coaches.component';
+import { AdminTeamsComponent } from './admin/admin-teams/admin-teams.component';
+import { AdminPlayersComponent } from './admin/admin-players/admin-players.component';
+import { SportFormComponent } from './admin/admin-sports/sport-form/sport-form.component';
+import { AdminTeamRequestsComponent } from './admin/admin-team-requests/admin-team-requests.component';
+import { AdminEventRequestsComponent } from './admin/admin-event-requests/admin-event-requests.component';
 
 export const routes: Routes = [
   {
@@ -21,7 +31,26 @@ export const routes: Routes = [
       { path: 'sport-details/:id', component: SportDetailsComponent },
       { path: 'event-details/:id', component: EventDetailsComponent },
       { path: 'table-results/:id', component: TableResultsComponent },
-      { path: 'tournament-results', component: TournamentGridComponent },
+      { path: 'tournament-results/:id', component: TournamentGridComponent },
+    ],
+  },
+  {
+    path: 'admin-main',
+    component: AdminMainComponent,
+    children: [
+      { path: 'admin-sports', component: AdminSportsComponent },
+      { path: 'sport-add', component: SportFormComponent },
+      { path: 'sport-edit/:id', component: SportFormComponent },
+      { path: 'admin-events', component: AdminEventsComponent },
+      {
+        path: 'admin-events-results/:id',
+        component: AdminEventsResultsComponent,
+      },
+      { path: 'admin-coaches', component: AdminCoachesComponent },
+      { path: 'admin-teams', component: AdminTeamsComponent },
+      { path: 'admin-players', component: AdminPlayersComponent },
+      { path: 'team-requests', component: AdminTeamRequestsComponent},
+      { path: 'event-requests', component: AdminEventRequestsComponent },
     ],
   },
 ];

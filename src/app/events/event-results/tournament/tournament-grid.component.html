@@ -1,0 +1,35 @@
+<div class="main-container">
+  <div class="left-container">
+    <h2 class="event-title">{{ eventName }} - Tournament</h2>
+    <div class="tournament-grid" *ngIf="!errorMessage">
+      <div class="round" *ngFor="let round of sortedRounds">
+        <div class="matches">
+          <div class="match" *ngFor="let match of round.value">
+            <div
+              class="player"
+              [class.winner]="match.winner?.id === match.player1?.id"
+            >
+              {{ match.player1?.name || "—" }}
+            </div>
+            <div class="vs">vs</div>
+            <div
+              class="player"
+              [class.winner]="match.winner?.id === match.player2?.id"
+            >
+              {{ match.player2?.name || "—" }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="right-container" *ngIf="tournamentWinner">
+    <div class="winner-icon">
+      <img src="assets/images/winner.png" alt="Winner Icon" />
+      <h2>Winner</h2>
+    </div>
+    <div class="winner-card">
+      <span class="winner-name">{{ tournamentWinner.name }}</span>
+    </div>
+  </div>
+</div>

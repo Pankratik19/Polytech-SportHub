@@ -40,7 +40,10 @@
 
   .image-container {
     img {
-      height: 100px;
+      width: 120px;
+      height: 140px;
+      border-radius: 16px;
+      
     }
   }
 
@@ -89,6 +92,10 @@
       transition: all 0.3s ease;
     }
   }
+}
+
+.event-card:last-child {
+  border-bottom: none;
 }
 
 .tooltip {

@@ -6,30 +6,30 @@
     <div class="top-container">
       <div class="image-container">
         <img
-          [src]="event.sport.photo || 'assets/images/ball.png'"
-          alt="Sport"
+          [src]="getSportPhotoUrl(event.sport.photo)"
+          alt="{{ event.sport.name }}"
         />
 
-        <div class="buttons-container">
-          <div class="tooltip">
-            <button>
-              <img [src]="getTypeEventIcon(event.typeEvent)" alt="type" />
-            </button>
-            <span class="tooltip-text">{{ event.typeEvent }}</span>
-          </div>
-          <div class="tooltip">
-            <button>
-              <img [src]="getFormatIcon(event.format)" alt="format" />
-            </button>
-            <span class="tooltip-text">{{ event.format }}</span>
-          </div>
-          <div class="tooltip">
-            <button>
-              <img [src]="getGenderIcon(event.gender)" alt="gender" />
-            </button>
-            <span class="tooltip-text">{{ event.gender }}</span>
-          </div>
+      <div class="buttons-container">
+        <div class="tooltip">
+          <button>
+            <img [src]="getTypeEventIcon(event.typeEvent)" alt="type" />
+          </button>
+          <span class="tooltip-text">{{ event.typeEvent }}</span>
         </div>
+        <div class="tooltip">
+          <button>
+            <img [src]="getFormatIcon(event.format)" alt="format" />
+          </button>
+          <span class="tooltip-text">{{ event.format }}</span>
+        </div>
+        <div class="tooltip">
+          <button>
+            <img [src]="getGenderIcon(event.gender)" alt="gender" />
+          </button>
+          <span class="tooltip-text">{{ event.gender }}</span>
+        </div>
+      </div>
       </div>
 
       <div class="description-container">

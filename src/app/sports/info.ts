@@ -1,6 +1,6 @@
 export interface Info {
-  id: number;
+  id?: number;
   text: string;
-  photo: string;
-  sport_id: number;
+  photo?: string;
+  sport_id?: number;
 }

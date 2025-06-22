@@ -1,7 +1,14 @@
 <div class="main-container">
-  <div class="card-container" *ngFor="let sport of sports">
-    <!-- <img [src]="getSportPhotoUrl(sport.photo)" alt="{{ sport.name }}" /> -->
-    <h1>{{ sport.name }}</h1>
-    <button [routerLink]="['/sport-details', sport.id]">Details</button>
+  <div
+    class="card-container"
+    *ngFor="let sport of sports"
+    [ngStyle]="{
+      'background-image': 'url(' + getSportPhotoUrl(sport.photo) + ')'
+    }"
+  >
+    <div class="card-overlay">
+      <h1>{{ sport.name }}</h1>
+      <button [routerLink]="['/sport-details', sport.id]">Details</button>
+    </div>
   </div>
 </div>

@@ -4,7 +4,7 @@
     <div class="event-group-container">
       <div class="event-card" *ngFor="let event of tournamentEvents">
         <div class="image-container">
-          <img src="assets/images/ball.png" alt="img" />
+          <img [src]="getSportPhotoUrl(event.sport.photo)" alt="{{ event.sport.name }}" />
         </div>
         <div class="info">
           <h3>{{ event.name }}</h3>
@@ -20,7 +20,7 @@
           <div class="tooltip">
             <button
               class="button-results"
-              [routerLink]="['/tournament-results']"
+              [routerLink]="['/tournament-results', event.id]"
             ></button>
             <span class="tooltip-text">Results</span>
           </div>
@@ -34,7 +34,7 @@
     <div class="event-group-container">
       <div class="event-card" *ngFor="let event of tableEvents">
         <div class="image-container">
-          <img src="assets/images/ball.png" alt="img" />
+          <img [src]="getSportPhotoUrl(event.sport.photo)" alt="{{ event.sport.name }}" />
         </div>
         <div class="info">
           <h3>{{ event.name }}</h3>

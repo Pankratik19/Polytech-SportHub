@@ -37,11 +37,11 @@ namespace SportHubApi.Models
         public Gender? Gender { get; set; }
 
         [Column("sport_id")]
-        public int SportId { get; set; }
+        public int? SportId { get; set; }
 
         public required Sport Sport { get; set; }
 
-        public required ICollection<JoinEventRequest> JoinEventRequest { get; set; }
+        public required ICollection<JoinEventRequest> JoinEventRequest { get; set; } = new List<JoinEventRequest>();
 
         public ICollection<Match>? Matches { get; set; }
         public ICollection<EventResult>? EventResults { get; set; }
