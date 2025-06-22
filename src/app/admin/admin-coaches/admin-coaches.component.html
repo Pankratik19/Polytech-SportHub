@@ -1,1 +1,29 @@
 <h1>Admin coaches</h1>
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>№</th> 
+        <th>Photo</th>
+        <th>Name</th>
+        <th>
+          <button class="add-button">
+            <i class="fas fa-plus"></i>
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let coach of coaches; let i = index">
+        <td>{{ i+1 }}</td>
+        <td><img class="coach-img" [src]="getCoachPhotoUrl(coach.photo)" alt="{{ coach.name }}" /></td>
+        <td>{{ coach.name }}</td>
+        <td>
+          <button class="edit-button"><i class="fas fa-pen"></i></button
+          ><button class="delete-button"><i class="fas fa-minus"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<router-outlet></router-outlet>

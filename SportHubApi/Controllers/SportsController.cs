@@ -46,7 +46,7 @@ namespace SportsApi.Controllers
                     .ThenInclude(t => t.Coach)
                 .Include(s => s.Teams)
                     .ThenInclude(t => t.Players)
-                .Include(s => s.Info) // Include Info
+                .Include(s => s.Info)
                 .FirstOrDefaultAsync(s => s.Id == id);
 
             if (sport == null)
@@ -108,6 +108,49 @@ namespace SportsApi.Controllers
             await _context.SaveChangesAsync();
 
             return Ok(new { photo = fileName });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateSport([FromBody] Sport sport)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            _context.Sports.Add(sport);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetSportById), new { id = sport.Id }, sport);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateSport(int id, [FromBody] Sport updatedSport)
+        {
+            if (id != updatedSport.Id)
+                return BadRequest("ID mismatch");
+
+            var existingSport = await _context.Sports.FindAsync(id);
+            if (existingSport == null)
+                return NotFound();
+
+            existingSport.Name = updatedSport.Name;
+            existingSport.CoachId = updatedSport.CoachId;
+
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteSport(int id)
+        {
+            var sport = await _context.Sports.FindAsync(id);
+
+            if (sport == null)
+                return NotFound();
+
+            _context.Sports.Remove(sport);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
         }
 
     }

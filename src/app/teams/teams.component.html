@@ -14,12 +14,7 @@
       </div>
       <div class="coach" *ngIf="team.coach">
         <div class="img">
-          <img
-            [src]="
-              team.coach.photo ? team.coach.photo : 'assets/images/profile.jpg'
-            "
-            alt="Coach"
-          />
+          <img [src]="getCoachPhotoUrl(team.coach.photo)" alt="{{ team.coach.name }}" />
         </div>
         <h3>{{ team.coach.name }}</h3>
       </div>

@@ -27,4 +27,25 @@ export class AdminSportsComponent {
       },
     });
   }
+
+  deleteSport(id: number): void {
+    if (confirm('Are you sure you want to delete this sport?')) {
+      this.sportService.deleteSport(id).subscribe({
+        next: () => {
+          this.sports = this.sports.filter((s) => s.id !== id);
+          alert('✅ Sport was deleted successfully');
+        },
+        error: (err) => {
+          console.error('Failed to delete sport:', err);
+          alert('❌ Failed to delete sport');
+        },
+      });
+    }
+  }
+
+  getSportPhotoUrl(photo: string | null): string {
+    return photo
+      ? `http://localhost:5264/uploads/${photo}`
+      : 'assets/images/profile.jpg';
+  }
 }

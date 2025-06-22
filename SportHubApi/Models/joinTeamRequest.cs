@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using SportHubApi.Models.Enums;
 
 namespace SportHubApi.Models
@@ -32,6 +33,10 @@ namespace SportHubApi.Models
 
         [Column("sport_id")]
         public int SportId { get; set; }
+
+        [JsonIgnore]
+        public virtual Sport? Sport { get; set; }
+
 
     }
 }

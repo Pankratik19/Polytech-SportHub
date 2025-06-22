@@ -16,6 +16,8 @@ import { AdminCoachesComponent } from './admin/admin-coaches/admin-coaches.compo
 import { AdminTeamsComponent } from './admin/admin-teams/admin-teams.component';
 import { AdminPlayersComponent } from './admin/admin-players/admin-players.component';
 import { SportFormComponent } from './admin/admin-sports/sport-form/sport-form.component';
+import { AdminTeamRequestsComponent } from './admin/admin-team-requests/admin-team-requests.component';
+import { AdminEventRequestsComponent } from './admin/admin-event-requests/admin-event-requests.component';
 
 export const routes: Routes = [
   {
@@ -29,26 +31,26 @@ export const routes: Routes = [
       { path: 'sport-details/:id', component: SportDetailsComponent },
       { path: 'event-details/:id', component: EventDetailsComponent },
       { path: 'table-results/:id', component: TableResultsComponent },
-      { path: 'tournament-results', component: TournamentGridComponent },
+      { path: 'tournament-results/:id', component: TournamentGridComponent },
     ],
   },
   {
     path: 'admin-main',
     component: AdminMainComponent,
     children: [
-      {
-        path: 'admin-sports',
-        component: AdminSportsComponent,
-        children: [
-          { path: 'sport-add', component: SportFormComponent },
-          { path: 'sport-edit/:id', component: SportFormComponent },
-        ],
-      },
+      { path: 'admin-sports', component: AdminSportsComponent },
+      { path: 'sport-add', component: SportFormComponent },
+      { path: 'sport-edit/:id', component: SportFormComponent },
       { path: 'admin-events', component: AdminEventsComponent },
-      { path: 'admin-events-results', component: AdminEventsResultsComponent },
+      {
+        path: 'admin-events-results/:id',
+        component: AdminEventsResultsComponent,
+      },
       { path: 'admin-coaches', component: AdminCoachesComponent },
       { path: 'admin-teams', component: AdminTeamsComponent },
       { path: 'admin-players', component: AdminPlayersComponent },
+      { path: 'team-requests', component: AdminTeamRequestsComponent},
+      { path: 'event-requests', component: AdminEventRequestsComponent },
     ],
   },
 ];

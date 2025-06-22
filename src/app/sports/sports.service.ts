@@ -31,8 +31,20 @@ export class SportService {
     const formData = new FormData();
     formData.append('file', file);
 
-    const url = `${this.apiUrl}/${sportId}/upload-photo`; // adjust this to your backend route
+    const url = `${this.apiUrl}/${sportId}/upload-photo`;
 
     return this.http.post(url, formData);
+  }
+
+  createSport(sport: Sport): Observable<Sport> {
+    return this.http.post<Sport>(this.apiUrl, sport);
+  }
+
+  updateSport(id: number, sport: Sport): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/${id}`, sport);
+  }
+
+  deleteSport(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

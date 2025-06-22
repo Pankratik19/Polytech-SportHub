@@ -1,1 +1,33 @@
 <h1>Admin players</h1>
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>№</th>
+        <th>Name</th>
+        <th>Group</th>
+        <th>Team</th>
+        <th>Sport</th>
+        <th>
+          <button class="add-button">
+            <i class="fas fa-plus"></i>
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let player of players; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ player.name }}</td> 
+        <td>{{ player.groupNumber }}</td>
+        <td>{{ player.team.name }}</td>
+        <td>{{ player.team.sport?.name }}</td>
+        <td>
+          <button class="edit-button"><i class="fas fa-pen"></i></button
+          ><button class="delete-button"><i class="fas fa-minus"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<router-outlet></router-outlet>

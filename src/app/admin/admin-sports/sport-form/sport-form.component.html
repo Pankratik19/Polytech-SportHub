@@ -1,1 +1,49 @@
-<h1>sport form</h1>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div>
+    <label for="name">Sport Name:</label>
+    <input id="name" type="text" formControlName="name" />
+    <div
+      class="error"
+      *ngIf="form.get('name')?.invalid && form.get('name')?.touched"
+    >
+      Name is required
+    </div>
+  </div>
+
+  <div>
+    <label for="infoText">Sport Info:</label>
+    <input id="infoText" type="text" formControlName="infoText" />
+    <div
+      class="error"
+      *ngIf="form.get('infoText')?.invalid && form.get('infoText')?.touched"
+    >
+      Info text is required
+    </div>
+  </div>
+
+  <div class="photo-upload">
+    <img
+      *ngIf="photoPreviewUrl"
+      [src]="photoPreviewUrl"
+      alt="Selected"
+      class="photo-preview"
+    />
+
+    <img
+      *ngIf="!photoPreviewUrl && existingPhotoUrl"
+      [src]="existingPhotoUrl"
+      alt="Current"
+      class="photo-preview"
+    />
+    <label for="photo" class="upload-button">
+      Upload Photo
+      <input id="photo" type="file" (change)="onPhotoSelected($event)" hidden />
+    </label>
+
+    <div class="selected-file" *ngIf="photoFile">
+      Selected file: <strong>{{ photoFile.name }}</strong>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="form.invalid">Save Sport</button>
+</form>

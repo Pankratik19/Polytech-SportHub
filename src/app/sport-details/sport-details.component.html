@@ -5,14 +5,20 @@
       <div class="img-container">
         <img [src]="getSportPhotoUrl(sport.photo)" alt="{{ sport.name }}" />
       </div>
-      <div class="info-container" *ngFor="let info of sport.info">
-        <p>{{ info.text || "No description available." }}</p>
-      </div><div>
-      <input type="file" (change)="onFileSelected($event)" />
-      <button (click)="upload(sport.id)">Upload</button>
+      <div class="info-container" >
+        <p>
+          Volleyball is a team sport played by two teams of six players on a
+          rectangular court divided by a net. The goal is to send the ball over
+          the net and ground it on the opponent’s side while preventing the same
+          on your own side. It was invented in 1895 by William G. Morgan as a
+          less intense alternative to basketball.
+        </p>
+      </div>
+      <div>
+        <!-- <input type="file" (change)="onFileSelected($event)" />
+      <button (click)="upload(sport.id)">Upload</button> -->
+      </div>
     </div>
-    </div>
-    
 
     <div class="TeamInfo">
       <div class="team-card" *ngFor="let team of sport.teams">
@@ -29,14 +35,14 @@
             />
           </div>
 
-          <div class="coach" *ngIf="team.coach">
+          <div class="coach" *ngIf="sport.teams?.[0]?.coach">
             <div class="img">
               <img
-                [src]="team.coach.photo || 'assets/images/profile.jpg'"
-                alt="{{ team.coach.name }}"
+                [src]="getCoachPhotoUrl(sport.teams?.[0]?.coach?.photo)"
+                alt="{{ sport.teams?.[0]?.coach?.name }}"
               />
             </div>
-            <h3>{{ team.coach.name }}</h3>
+            <h3>{{ sport.teams?.[0]?.coach?.name }}</h3>
           </div>
         </div>
 

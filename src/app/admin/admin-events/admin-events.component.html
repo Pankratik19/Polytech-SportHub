@@ -1,1 +1,36 @@
 <h1>Admin events</h1>
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>№</th>
+        <th>Name</th>
+        <th>Sport name</th>
+        <th>Dates</th>
+        <th>Event type</th>
+        <th>Event format</th>
+        <th>
+          <button class="add-button">
+            <i class="fas fa-plus"></i>
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let event of events; let i = index">
+        <td>{{ i+1 }}</td>
+        <td>{{ event.name }}</td>
+        <td>{{ event.sport.name }}</td>
+        <td>{{ event.startDate | date : "dd.MM.yyyy" }} - {{ event.endDate | date : "dd.MM.yyyy" }}</td>
+        <td>{{ event.typeEvent }}</td>
+        <td>{{ event.format }}</td>
+        <td>
+          <button class="edit-button" [routerLink]="['/admin-main', 'admin-events-results', event.id]"><i class="fas fa-eye"></i></button>
+          <button class="edit-button"><i class="fas fa-pen"></i></button>
+          <button class="delete-button"><i class="fas fa-minus"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<router-outlet></router-outlet>

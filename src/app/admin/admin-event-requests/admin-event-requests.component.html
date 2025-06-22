@@ -1,0 +1,58 @@
+<h1>Join event requests</h1>
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>№</th>
+        <th>Names</th>
+        <th>Group</th>
+        <th>Date</th>
+        <th>Event name</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let eventRequest of eventRequests; let i = index"
+        [class.inactive]="
+          eventRequest.status === 'Approved' || eventRequest.status === 'Rejected'
+        "
+      >
+        <td>{{ i + 1 }}</td>
+        <td>{{ eventRequest.memberNames }}</td>
+        <td>{{ eventRequest.groupNumber }}</td>
+        <td>{{ eventRequest.submittedAt | date : "dd.MM.yyyy" }}</td>
+        <td>{{ getEventNameById(eventRequest.eventId) }}</td>
+        <td>{{ eventRequest.email }}</td>
+        <td>{{ eventRequest.status }}</td>
+        <td>
+          <button
+            class="approve-button"
+            (click)="approveRequest(eventRequest.id)"
+            [ngClass]="{
+              hidden:
+                eventRequest.status === 'Approved' ||
+                eventRequest.status === 'Rejected'
+            }"
+          >
+            <i class="fas fa-check"></i>
+          </button>
+          <button
+            class="decline-button"
+            (click)="declineRequest(eventRequest.id)"
+            [ngClass]="{
+              hidden:
+                eventRequest.status === 'Approved' ||
+                eventRequest.status === 'Rejected'
+            }"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<router-outlet></router-outlet>

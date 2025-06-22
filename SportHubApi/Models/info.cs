@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 namespace SportHubApi.Models
 {
     [Table("info")]
@@ -14,8 +15,9 @@ namespace SportHubApi.Models
         public required string Photo { get; set; }
 
         [Column("sport_id")]
-        public int SportId { get; set; }
+        public int? SportId { get; set; }
 
-        public required Sport Sport { get; set; }
+ [JsonIgnore]
+        public Sport? Sport { get; set; }
     }
 }

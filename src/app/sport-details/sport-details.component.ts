@@ -82,18 +82,24 @@ export class SportDetailsComponent implements OnInit {
     }
   }
 
-  upload(sportId: number) {
-    if (!this.selectedFile) return;
+  // upload(sportId: number) {
+  //   if (!this.selectedFile) return;
 
-    this.sportService.uploadPhoto(sportId, this.selectedFile).subscribe({
-      next: (res) => console.log('Upload success', res),
-      error: (err) => console.error('Upload error', err),
-    });
-  }
+  //   this.sportService.uploadPhoto(sportId, this.selectedFile).subscribe({
+  //     next: (res) => console.log('Upload success', res),
+  //     error: (err) => console.error('Upload error', err),
+  //   });
+  // }
 
   getSportPhotoUrl(photo: string | null): string {
     return photo
       ? `http://localhost:5264/uploads/${photo}`
       : 'assets/images/ball.png';
+  }
+
+  getCoachPhotoUrl(photo: string | undefined | null): string {
+    return photo
+      ? `http://localhost:5264/uploads/${photo}`
+      : 'assets/images/profile.jpg';
   }
 }
